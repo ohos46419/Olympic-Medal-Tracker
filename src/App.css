@@ -1,0 +1,10 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-form {
+  display: flex;
+  gap: 8px;
+}
