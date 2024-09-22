@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  // function App?
   const [countries, setCountries] = useState([]);
   // country가 아닌 countries이기 때문에 초기값을 배열로
   const [countryInput, setCountryInput] = useState("");
@@ -57,6 +56,17 @@ const App = () => {
     } else {
       alert("등록되지 않은 국가입니다.");
     }
+  };
+
+  const deleteCountry = (name) => {
+    setCountries(
+      countries.filter((country) => {
+        if (country.name.toLowerCase() !== name) {
+          return country;
+        }
+      })
+    );
+    alert("삭제되었습니다");
   };
 
   return (
@@ -128,6 +138,15 @@ const App = () => {
                   <td>{country.gold}</td>
                   <td>{country.silver}</td>
                   <td>{country.bronze}</td>
+
+                  <td
+                    onClick={() => {
+                      deleteCountry(country.name);
+                    }}
+                    className="delete-btn"
+                  >
+                    삭제하기
+                  </td>
                 </tr>
               );
             })}
